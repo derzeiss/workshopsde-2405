@@ -1,0 +1,13 @@
+# dev env
+.env
+
+# lib
+node_modules/
+
+# generated
+build/
+dist/
+coverage/
+
+# custom
+prep/
