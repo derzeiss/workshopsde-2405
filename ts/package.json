@@ -1,0 +1,17 @@
+{
+  "name": "ts",
+  "version": "1.0.0",
+  "description": "1. Install dependencies and create required files",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^5.4.5"
+  }
+}
