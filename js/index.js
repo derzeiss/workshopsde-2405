@@ -198,13 +198,26 @@ const logIsTruthy = (val) => {
 
 logIsTruthy(-1);
 logIsTruthy(1);
-logIsTruthy(0);
+logIsTruthy(0); // falsy
 logIsTruthy(' ');
-logIsTruthy('');
+logIsTruthy(''); // falsy
 logIsTruthy('one');
 logIsTruthy(true);
-logIsTruthy(false);
+logIsTruthy(false); // falsy
 logIsTruthy({});
 logIsTruthy([]);
-logIsTruthy(null);
-logIsTruthy(undefined);
+logIsTruthy(null); // falsy
+logIsTruthy(undefined); // falsy
+
+console.log('---- 04 FALSY- / NULLISH-COALESCING ----');
+
+const defaultOptions = {
+  headers: '...',
+  strict: true,
+  numberOfRetries: 4,
+};
+
+const getConfig = (headers, _strict, numberOfRetries) => {
+  headers = headers || defaultOptions.headers;
+  numberOfRetries = numberOfRetries ?? defaultOptions.numberOfRetries;
+};
