@@ -7,7 +7,7 @@ interface Attendee {
   company: string;
   age: number;
   hasTypeScriptExperience: boolean;
-  hobbies?: string[];
+  hobbies?: string[]; // | undefined
   editor: 'Visual Studio Code' | 'IntelliJ';
 }
 
