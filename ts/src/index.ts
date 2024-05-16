@@ -111,3 +111,27 @@ const collection: Record<string, number> = {
 };
 
 // ---- GENERICS ----
+
+const asValueObj = <T>(arr: T[]) => arr.map((entry) => ({ val: entry }));
+
+const numbers = [1, 2, 3, 4];
+const strings = ['one', 'two', 'three'];
+
+const numberVals = asValueObj(numbers);
+const stringVals = asValueObj(strings);
+
+numberVals.map((e) => (e.val = e.val + 1));
+stringVals.map((e) => e.val.length);
+
+function myVal<T>(val: T) {
+  return val;
+}
+
+const myFunc = <T extends unknown[]>(param: T) => param.filter((e) => !!e);
+
+myFunc([1, 2, 3]);
+myFunc([strings]);
+
+type Primitive = number | string | boolean;
+
+const getObjProperty = <T extends Primitive>(obj: T, key: keyof T) => obj[key];
