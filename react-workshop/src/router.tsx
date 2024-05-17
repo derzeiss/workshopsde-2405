@@ -1,9 +1,9 @@
 import { createBrowserRouter, redirect } from 'react-router-dom';
 import App from './App';
-import { ErrorScreen } from './screens/ErrorScreen';
 import { AboutScreen } from './screens/AboutScreen';
 import { BooksScreen } from './screens/BooksScreen';
-import { ErrorScreen2 } from './screens/ErrorScreen2';
+import { ErrorScreen } from './screens/ErrorScreen';
+import { BookDetailScreen } from './screens/BookDetailScreen';
 
 export const router = createBrowserRouter([
   {
@@ -18,7 +18,10 @@ export const router = createBrowserRouter([
       {
         path: '/books',
         element: <BooksScreen />,
-        errorElement: <ErrorScreen2 />,
+      },
+      {
+        path: '/books/:isbn',
+        element: <BookDetailScreen />,
       },
       {
         path: 'about',

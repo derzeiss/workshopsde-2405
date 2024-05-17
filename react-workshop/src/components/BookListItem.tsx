@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Book } from '../domain/book/Book';
 import { LikeCounter } from './LikeCounter';
 import { Hideable } from './Hideable';
+import { Link } from 'react-router-dom';
 
 interface BookListItemProps {
   book: Book;
@@ -20,11 +21,13 @@ export const BookListItem = ({ book }: BookListItemProps) => {
 
   return (
     <div className="book-list-item">
-      <h2>
-        {likes >= 5 && <span className="icon_entry">⭐️ </span>}
-        {book.price === '$0.00' && <span>💰 </span>}
-        {book.title}
-      </h2>
+      <Link to={`/books/${book.isbn}`}>
+        <h2>
+          {likes >= 5 && <span className="icon_entry">⭐️ </span>}
+          {book.price === '$0.00' && <span>💰 </span>}
+          {book.title}
+        </h2>
+      </Link>
       <h3>{book.subtitle}</h3>
       <LikeCounter likes={likes} setLikes={setLikes} />
       <div className="text-meta">by {book.author}</div>
