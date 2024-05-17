@@ -17,8 +17,8 @@ To be able to test our application efficiently, we'll install some libraries and
 
    /// <reference types="vitest" />
 
-   import { defineConfig } from "vite";
-   import react from "@vitejs/plugin-react";
+   import { defineConfig } from 'vite';
+   import react from '@vitejs/plugin-react';
 
    // https://vitejs.dev/config/
    export default defineConfig({
@@ -27,9 +27,9 @@ To be able to test our application efficiently, we'll install some libraries and
        // make testing functions global so we don't need to import them in every test-file
        globals: true,
        // we don't actually render our components in a browser window (this would be way too slow), instead we'll use jsdom
-       environment: "jsdom",
+       environment: 'jsdom',
        // tell vitest where our testing setup is located
-       setupFiles: "./src/setupTests.ts",
+       setupFiles: './src/setupTests.ts',
      },
    });
    ```
@@ -39,7 +39,7 @@ To be able to test our application efficiently, we'll install some libraries and
    ```ts
    // src/setupTests.ts
 
-   import "@testing-library/jest-dom/vitest";
+   import '@testing-library/jest-dom/vitest';
    ```
 
 1. Add necessary types to your `tsconfig.json`. This will help TypeScript recognize our global testing functions and matchers.
@@ -73,12 +73,13 @@ To be able to test our application efficiently, we'll install some libraries and
 1. Add an example test to check if everything works as expected. Create a new file `src/__tests__/App.spec.tsx` for this. (You don't need to understand this code right now, but we'll talk about every line in detail later)
 
    ```tsx
-   import { render, screen } from "@testing-library/react";
-   import App from "../App";
+   import { render, screen } from '@testing-library/react';
+   import { MemoryRouter } from 'react-router-dom';
+   import App from '../App';
 
-   describe("app", () => {
+   describe('app', () => {
      it('should display the text "bookmonkey"', () => {
-       render(<App />);
+       render(<App />, { wrapper: MemoryRouter });
        expect(screen.getByText(/bookmonkey/i)).toBeInTheDocument();
      });
    });
