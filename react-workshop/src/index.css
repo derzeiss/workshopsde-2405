@@ -281,6 +281,7 @@ input:focus {
 }
 
 label {
+  display: block;
   padding: 0 0.75rem;
   font-size: var(--font-xs);
   letter-spacing: 0.07em;
