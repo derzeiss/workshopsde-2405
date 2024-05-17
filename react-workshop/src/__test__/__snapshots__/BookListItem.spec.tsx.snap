@@ -1,0 +1,52 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`BookListItem > should match snapshot 1`] = `
+<div>
+  <div
+    class="book-list-item"
+  >
+    <a
+      href="/books/isbn_"
+    >
+      <h2>
+        <span>
+          💰 
+        </span>
+        title_
+      </h2>
+    </a>
+    <h3>
+      subtitle_
+    </h3>
+    <button
+      class="like-counter secondary"
+    >
+      <span>
+        👏
+      </span>
+      0
+    </button>
+    <div
+      class="text-meta"
+    >
+      by 
+      author_
+    </div>
+    <small
+      style="color: green;"
+    >
+      free
+    </small>
+    <div
+      class="hideable"
+    >
+      <button
+        class="tertiary"
+      >
+        + show
+         details
+      </button>
+    </div>
+  </div>
+</div>
+`;
