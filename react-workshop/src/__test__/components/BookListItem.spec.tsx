@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { Book } from '../domain/book/Book';
-import { BookListItem } from '../components/BookListItem';
+import { Book } from '../../domain/book/Book';
+import { BookListItem } from '../../components/BookListItem';
 
 describe('BookListItem', () => {
   const book: Book = {
