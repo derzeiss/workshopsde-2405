@@ -1,7 +1,8 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { Book } from '../domain/book/Book';
 import { useBook } from '../domain/book/useBook';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { updateBook } from '../domain/book/api';
 
 const validators: { [name in keyof Book]?: (value: string) => string | null } = {
   title: (val) => (val.length < 5 ? 'Title must be at least 5 characters long' : null),
@@ -9,6 +10,7 @@ const validators: { [name in keyof Book]?: (value: string) => string | null } = 
 };
 
 export const BookEditScreen = () => {
+  const navigate = useNavigate();
   const { isbn } = useParams();
   const { book, state, data: msg } = useBook(isbn);
   const [values, setValues] = useState<Partial<Book>>({
@@ -18,6 +20,11 @@ export const BookEditScreen = () => {
   });
   const [errors, setErrors] = useState<{ [name in keyof Book]?: string }>({});
 
+  const hasChanges =
+    book.title !== values.title ||
+    book.subtitle !== values.subtitle ||
+    book.author !== values.author;
+
   useEffect(() => {
     if (!book || state !== 'success') return;
     setValues(book);
@@ -25,7 +32,12 @@ export const BookEditScreen = () => {
 
   const handleSubmit = (ev: FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
-    console.log(values);
+    if (!book) return;
+
+    updateBook(book.isbn, { ...book, ...values }).then(() => {
+      navigate(`/books/${book.isbn}`);
+      alert('Book updated successfully');
+    });
   };
 
   const handleChange = (ev: ChangeEvent<HTMLInputElement>) => {
@@ -61,7 +73,7 @@ export const BookEditScreen = () => {
             <input name="author" value={values.author} onChange={handleChange} />
           </label>
 
-          <button type="submit">
+          <button type="submit" disabled={!hasChanges}>
             <span>💾</span>save
           </button>
           <pre>{JSON.stringify(errors, null, 2)}</pre>
