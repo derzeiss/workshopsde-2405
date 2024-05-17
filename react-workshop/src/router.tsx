@@ -5,6 +5,7 @@ import { BooksScreen } from './screens/BooksScreen';
 import { ErrorScreen } from './screens/ErrorScreen';
 import { BookDetailScreen } from './screens/BookDetailScreen';
 import { BookEditScreen } from './screens/BookEditScreen';
+import { CounterScreen } from './screens/CounterScreen';
 
 export const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ export const router = createBrowserRouter([
       {
         path: '/',
         loader: () => redirect('/books'),
+      },
+      {
+        path: '/counter',
+        element: <CounterScreen />,
       },
       {
         path: '/books',

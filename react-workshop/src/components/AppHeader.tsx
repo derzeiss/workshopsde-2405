@@ -10,6 +10,7 @@ export const AppHeader = () => {
       <nav>
         <NavLink to="/books">Books</NavLink>
         <NavLink to="/about">About</NavLink>
+        <NavLink to="/counter">Counter</NavLink>
       </nav>
     </header>
   );

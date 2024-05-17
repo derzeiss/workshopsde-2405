@@ -5,6 +5,7 @@ exports[`BookListItem > should match snapshot 1`] = `
   <div
     class="book-list-item"
   >
+    hello world
     <a
       href="/books/isbn_"
     >
