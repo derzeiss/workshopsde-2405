@@ -16,6 +16,13 @@ export const BookDetailScreen = () => {
       <h3>{book.subtitle}</h3>
       <div className="text-meta">by {book.author}</div>
       {book.abstract}
+
+      <Link to={`/books/${book.isbn}/edit`} className="m-top">
+        <button>
+          <span>✏️</span>
+          Edit book
+        </button>
+      </Link>
     </div>
   );
 };
